@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carambar & Co - Blagues</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Carambar & Co</h1>
+    <p>Les blagues les plus croustillantes !</p>
+    <nav>
+      <ul>
+        <li><a href="#" id="navHome" class="active">Accueil</a></li>
+        <li><a href="#" id="navList">Toutes les blagues</a></li>
+        <li><a href="#" id="navAdd">Ajouter une blague</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Page d'accueil -->
+  <section id="homePage" class="page">
+    <div class="container">   
+      <div class="joke-container">
+        <div class="joke-question">Cliquez sur le bouton pour découvrir une blague !</div>
+        <div class="joke-answer" id="jokeAnswer"></div>
+      </div>
+
+      <button class="btn" id="jokeBtn">Une blague !</button>
+      <button class="btn btn-secondary" id="answerBtn">Voir la réponse</button>
+      <div class="loading" id="loading">Chargement...</div>
+    </div>
+  </section>
+
+  <!-- Page de liste de toutes les blagues -->
+  <section id="listPage" class="page hidden">
+    <div class="container">
+      <h2>Toutes les blagues</h2>
+      <div class="jokes-list" id="jokesList">
+        <!-- Les blagues seront ajoutées ici dynamiquement -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Page d'ajout d'une blague -->
+  <section id="addPage" class="page hidden">
+    <div class="container">
+      <h2>Ajouter une nouvelle blague</h2>
+      <form id="addJokeForm" class="joke-form">
+        <div class="form-group">
+          <label for="jokeQuestion">Question</label>
+          <textarea id="jokeQuestion" name="question" required placeholder="Entrez la question de votre blague"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="jokeAnswerInput">Réponse</label>
+          <textarea id="jokeAnswerInput" name="answer" required placeholder="Entrez la réponse à votre blague"></textarea>
+        </div>
+        <button type="submit" class="btn">Ajouter la blague</button>
+      </form>
+      <div id="formMessage" class="form-message"></div>
+    </div>
+  </section>
+
+  <!-- Page de détail d'une blague -->
+  <section id="detailPage" class="page hidden">
+    <div class="container">
+      <div class="joke-detail">
+        <h2>Détail de la blague</h2>
+        <div class="joke-container detailed">
+          <div class="joke-question" id="detailQuestion"></div>
+          <div class="joke-answer visible" id="detailAnswer"></div>
+        </div>
+        <button class="btn" id="backToList">Retour à la liste</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy;  Carambar & Co - Tous droits réservés</p>
+  </footer>
+<!-- un exemple de blague mockup -->
+  <script src="jokes-data.js"></script>
+
+  <script src="main.js"></script>
+</body>
+</html>
