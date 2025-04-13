@@ -290,3 +290,34 @@ footer {
 }
 /* Fin Styles pour le formulaire de soumission de blague */
 
+/* Début styles @media pour les écrans plus petits */
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .container {
+    padding: 15px;
+  }
+
+  .joke-container {
+    padding: 20px;
+    min-height: 150px;
+  }
+
+  .joke-question {
+    font-size: 20px;
+  }
+
+  .joke-answer {
+    font-size: 18px;
+  }
+
+  .btn {
+    padding: 12px 24px;
+    font-size: 16px;
+  }
+}
+
+/* Fin styles @media pour les écrans plus petits */
