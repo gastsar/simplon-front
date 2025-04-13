@@ -1,65 +1,83 @@
-document.addEventListener('DOMContentLoaded', function () {
-
-  const API_BASE = 'https://simplon-back.onrender.com/api/v1/blagues';
+document.addEventListener("DOMContentLoaded", function () {
+  const API_BASE = "https://simplon-back.onrender.com/api/v1/blagues";
 
   // Sélection des éléments DOM
-  const homePage = document.getElementById('homePage');
-  const listPage = document.getElementById('listPage');
-  const addPage = document.getElementById('addPage');
-  const detailPage = document.getElementById('detailPage');
+  const homePage = document.getElementById("homePage");
+  const listPage = document.getElementById("listPage");
+  const addPage = document.getElementById("addPage");
+  const detailPage = document.getElementById("detailPage");
 
-  const navHome = document.getElementById('navHome');
-  const navList = document.getElementById('navList');
-  const navAdd = document.getElementById('navAdd');
+  const navHome = document.getElementById("navHome");
+  const navList = document.getElementById("navList");
+  const navAdd = document.getElementById("navAdd");
 
-  const jokeTitle = document.querySelector('#homePage .joke-question');
-  const jokeContenu = document.getElementById('jokeContenu');
-  const jokeBtn = document.getElementById('jokeBtn');
-  const answerBtn = document.getElementById('answerBtn');
-  const loading = document.getElementById('loading');
+  const jokeTitle = document.querySelector("#homePage .joke-question");
+  const jokeContenu = document.getElementById("jokeContenu");
+  const jokeBtn = document.getElementById("jokeBtn");
+  const answerBtn = document.getElementById("answerBtn");
+  const loading = document.getElementById("loading");
 
-  const jokesList = document.getElementById('jokesList');
-  const addJokeForm = document.getElementById('addJokeForm');
-  const formMessage = document.getElementById('formMessage');
+  const jokesList = document.getElementById("jokesList");
+  const addJokeForm = document.getElementById("addJokeForm");
+  const formMessage = document.getElementById("formMessage");
 
-  const detailTitle = document.getElementById('detailTitle');
-  const detailAnswer = document.getElementById('detailAnswer');
-  const backToListBtn = document.getElementById('backToList');
+  const detailTitle = document.getElementById("detailTitle");
+  const detailContenu = document.getElementById("detailContenu");
+  const backToListBtn = document.getElementById("backToList");
 
   let currentJoke = null;
 
   function showPage(pageId) {
-    homePage.classList.add('hidden');
-    listPage.classList.add('hidden');
-    addPage.classList.add('hidden');
-    detailPage.classList.add('hidden');
+    homePage.classList.add("hidden");
+    listPage.classList.add("hidden");
+    addPage.classList.add("hidden");
+    detailPage.classList.add("hidden");
 
-    navHome.classList.remove('active');
-    navList.classList.remove('active');
-    navAdd.classList.remove('active');
+    navHome.classList.remove("active");
+    navList.classList.remove("active");
+    navAdd.classList.remove("active");
 
-    document.getElementById(pageId).classList.remove('hidden');
+    document.getElementById(pageId).classList.remove("hidden");
 
-    if (pageId === 'homePage') {
-      navHome.classList.add('active');
-    } else if (pageId === 'listPage') {
-      navList.classList.add('active');
+    // Mettre à jour la classe active dans la barre de navigation
+    if (pageId === "homePage") {
+      navHome.classList.add("active");
+    } else if (pageId === "listPage") {
+      navList.classList.add("active");
       renderJokesList();
-    } else if (pageId === 'addPage') {
-      navAdd.classList.add('active');
+    } else if (pageId === "addPage") {
+      navAdd.classList.add("active");
     }
   }
 
+  // Événements pour la navigation
+  navHome.addEventListener("click", function (e) {
+    e.preventDefault();
+    showPage("homePage");
+  });
+
+  // Événements pour la navigation
+  navList.addEventListener("click", function (e) {
+    e.preventDefault();
+    showPage("listPage");
+  });
+
+  // Événements pour la navigation
+  navAdd.addEventListener("click", function (e) {
+    e.preventDefault();
+    showPage("addPage");
+  });
+
+  // Fonction pour récupérer une blague aléatoire
   async function fetchRandomJoke() {
-    loading.style.display = 'block';
-    jokeContenu.classList.remove('visible');
-    answerBtn.textContent = 'Voir la réponse';
+    loading.style.display = "block";
+    jokeContenu.classList.remove("visible");
+    answerBtn.textContent = "Voir la réponse";
 
     try {
       const res = await fetch(`${API_BASE}/random`);
       const response = await res.json();
       currentJoke = response.data;
-     
 
       jokeTitle.textContent = currentJoke.titre;
       jokeContenu.textContent = currentJoke.contenu;
@@ -68,21 +86,22 @@ document.addEventListener('DOMContentLoaded', function () {
       jokeContenu.textContent = "";
     }
 
-    loading.style.display = 'none';
+    loading.style.display = "none";
   }
 
+  // Fonction pour afficher la liste des blagues
   async function renderJokesList() {
-    jokesList.innerHTML = '';
+    jokesList.innerHTML = "";
 
     try {
       const res = await fetch(`${API_BASE}`);
       const response = await res.json();
       const jokes = response.data;
-     console.log(jokes);
+      console.log(jokes);
 
-      jokes.forEach(joke => {
-        const jokeItem = document.createElement('div');
-        jokeItem.className = 'joke-item';
+      jokes.forEach((joke) => {
+        const jokeItem = document.createElement("div");
+        jokeItem.className = "joke-item";
         jokeItem.dataset.id = joke.id;
 
         jokeItem.innerHTML = `
@@ -90,7 +109,10 @@ document.addEventListener('DOMContentLoaded', function () {
           <p>Cliquez pour voir la réponse</p>
         `;
 
-        jokeItem.addEventListener('click', () => showJokeDetail(joke.id));
+        jokeItem.addEventListener("click", () =>{
+          showJokeDetail(joke.id);
+        });
+
         jokesList.appendChild(jokeItem);
       });
     } catch (err) {
@@ -98,27 +120,42 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  async function showJokeDetail(jokeId) {
-    try {
-     
-      const res = await fetch(`${API_BASE}/${jokeId}`);
-      const response = await res.json();
-      console.log(response);
+// Fonction pour afficher les détails d'une blague
+async function showJokeDetail(jokeId) {
+  try {
+    const res = await fetch(`${API_BASE}/${jokeId}`);
+    const response = await res.json();
+    const joke = response.data; // ✅ Extraction correcte
 
-      detailTitle.textContent = joke.titre;
-      detailAnswer.textContent = joke.contenu;
-      showPage('detailPage');
-    } catch (err) {
-      detailTitle.textContent = "Erreur";
-      detailContenu.textContent = "";
-    }
+    detailTitle.textContent = joke.titre;
+    detailContenu.textContent = joke.contenu;
+    showPage("detailPage");
+  } catch (err) {
+    detailTitle.textContent = "Erreur";
+    detailContenu.textContent = "";
   }
+}
 
-  async function addJoke(titre,contenu) {
+
+  // Événement pour le bouton "Nouvelle blague"
+  jokeBtn.addEventListener("click", fetchRandomJoke);
+
+  // Événement pour le bouton "Voir la réponse"
+  answerBtn.addEventListener("click", function () {
+    if (currentJoke) {
+      jokeContenu.classList.toggle("visible");
+      this.textContent = jokeContenu.classList.contains("visible")
+        ? "Cacher la réponse"
+        : "Voir la réponse";
+    }
+  });
+
+  // Fonction pour ajouter une blague
+  async function addJoke(titre, contenu) {
     const res = await fetch(API_BASE, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ titre,contenu })
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ titre, contenu }),
     });
 
     if (!res.ok) {
@@ -128,61 +165,41 @@ document.addEventListener('DOMContentLoaded', function () {
     return await res.json();
   }
 
-  // Events
-  navHome.addEventListener('click', function (e) {
-    e.preventDefault();
-    showPage('homePage');
-  });
-
-  navList.addEventListener('click', function (e) {
-    e.preventDefault();
-    showPage('listPage');
-  });
-
-  navAdd.addEventListener('click', function (e) {
-    e.preventDefault();
-    showPage('addPage');
-  });
-
-  jokeBtn.addEventListener('click', fetchRandomJoke);
-
-  answerBtn.addEventListener('click', function () {
-    if (currentJoke) {
-      jokeContenu.classList.toggle('visible');
-      this.textContent = jokeContenu.classList.contains('visible') ? 'Cacher la réponse' : 'Voir la réponse';
-    }
-  });
-
-  addJokeForm.addEventListener('submit', async function (e) {
+  // Événement pour le formulaire d'ajout de blague
+  addJokeForm.addEventListener("submit", async function (e) {
     e.preventDefault();
 
-    const questionValue = document.getElementById('jokeTitle').value.trim();
-    const answerValue = document.getElementById('jokeContenuInput').value.trim();
+    const titteValue = document.getElementById("jokeTitle").value.trim();
+    const contentValue = document
+      .getElementById("jokeContenuInput")
+      .value.trim();
 
-    if (questionValue && answerValue) {
+    if (titteValue && contentValue) {
       try {
-        await addJoke(questionValue, answerValue);
-        formMessage.className = 'form-message success';
-        formMessage.textContent = 'Blague ajoutée avec succès !';
+        await addJoke(titteValue, contentValue);
+        formMessage.className = "form-message success";
+        formMessage.textContent = "Blague ajoutée avec succès !";
         addJokeForm.reset();
 
         setTimeout(() => {
-          formMessage.textContent = '';
-          formMessage.className = 'form-message';
+          formMessage.textContent = "";
+          formMessage.className = "form-message";
         }, 3000);
       } catch (err) {
-        formMessage.className = 'form-message error';
-        formMessage.textContent = 'Erreur lors de l’envoi de la blague.';
+        formMessage.className = "form-message error";
+        formMessage.textContent = "Erreur lors de l’envoi de la blague.";
       }
     } else {
-      formMessage.className = 'form-message error';
-      formMessage.textContent = 'Veuillez remplir tous les champs.';
+      formMessage.className = "form-message error";
+      formMessage.textContent = "Veuillez remplir tous les champs.";
     }
   });
 
-  backToListBtn.addEventListener('click', function () {
-    showPage('listPage');
+  // Événement pour le bouton "Retour à la liste"
+  backToListBtn.addEventListener("click", function () {
+    showPage("listPage");
   });
 
+  // Appeler la fonction pour afficher une blague aléatoire au chargement de la page
   fetchRandomJoke();
 });
