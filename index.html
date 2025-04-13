@@ -24,7 +24,7 @@
     <div class="container">   
       <div class="joke-container">
         <div class="joke-question">Cliquez sur le bouton pour découvrir une blague !</div>
-        <div class="joke-answer" id="jokeAnswer"></div>
+        <div class="joke-answer" id="jokeContenu"></div>
       </div>
 
       <button class="btn" id="jokeBtn">Une blague !</button>
@@ -49,12 +49,12 @@
       <h2>Ajouter une nouvelle blague</h2>
       <form id="addJokeForm" class="joke-form">
         <div class="form-group">
-          <label for="jokeQuestion">Question</label>
-          <textarea id="jokeQuestion" name="question" required placeholder="Entrez la question de votre blague"></textarea>
+          <label for="jokeTitle">Question</label>
+          <textarea id="jokeTitle" name="question" required placeholder="Entrez la question de votre blague"></textarea>
         </div>
         <div class="form-group">
-          <label for="jokeAnswerInput">Réponse</label>
-          <textarea id="jokeAnswerInput" name="answer" required placeholder="Entrez la réponse à votre blague"></textarea>
+          <label for="jokeContenuInput">Réponse</label>
+          <textarea id="jokeContenuInput" name="answer" required placeholder="Entrez la réponse à votre blague"></textarea>
         </div>
         <button type="submit" class="btn">Ajouter la blague</button>
       </form>
@@ -68,8 +68,8 @@
       <div class="joke-detail">
         <h2>Détail de la blague</h2>
         <div class="joke-container detailed">
-          <div class="joke-question" id="detailQuestion"></div>
-          <div class="joke-answer visible" id="detailAnswer"></div>
+          <div class="joke-question" id="detailTitle"></div>
+          <div class="joke-answer visible" id="detailContenu"></div>
         </div>
         <button class="btn" id="backToList">Retour à la liste</button>
       </div>
@@ -79,9 +79,6 @@
   <footer>
     <p>&copy;  Carambar & Co - Tous droits réservés</p>
   </footer>
-<!-- un exemple de blague mockup -->
-  <script src="jokes-data.js"></script>
-
   <script src="main.js"></script>
 </body>
 </html>
