@@ -1,9 +1,10 @@
+
 :root {
-  --carambar-orange: #088a08;
-  --carambar-brown: #146141;
-  --carambar-yellow: #90ec8c;
-  --carambar-beige: #e9ffe0;
-  --carambar-light-brown: #52a664;
+  --coral: #fb7185;
+  --peach: #fdba74;
+  --sunshine: #facc15;
+  --offwhite: #fef9c3;
+  --charcoal: #1f2937;
 }
 
 * {
@@ -21,7 +22,7 @@ body {
 }
 
 .btn {
-  background-color: var(--carambar-orange);
+  background-color: var(--coral);
   color: white;
   border: none;
   border-radius: 30px;
@@ -33,7 +34,7 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 
   &:hover {
-    background-color: var(--carambar-brown);
+    background-color: var(--peach);
     transform: translateY(-2px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
   }
@@ -46,7 +47,7 @@ body {
 
 
 header {
-  background-color: var(--carambar-orange);
+  background-color: var(--coral);
   color: white;
   text-align: center;
   padding: 20px 0;
@@ -73,7 +74,7 @@ header {
         transition: all 0.3s ease;
 
         &.active {
-          background-color: var(--carambar-brown);
+          background-color: var(--peach);
           font-weight: bold;
         }
 
@@ -87,7 +88,7 @@ header {
 }
 
 footer {
-  background-color: var(--carambar-orange);
+  background-color: var(--coral);
   color: white;
   text-align: center;
   padding: 10px 0;
@@ -137,13 +138,13 @@ footer {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 20px;
-    color: var(--carambar-brown);
+    color: var(--peach);
   }
 
   & .joke-answer {
     font-size: 20px;
     margin-top: 10px;
-    color: var(--carambar-orange);
+    color: var(--coral);
     font-style: italic;
     opacity: 0;
     transform: translateY(20px);
@@ -156,8 +157,8 @@ footer {
   }
 
   & .btn-secondary {
-    background-color: var(--carambar-yellow);
-    color: var(--carambar-brown);
+    background-color: var(--sunshine);
+    color: var(--peach);
     margin-top: 15px;
   }
 
@@ -165,7 +166,7 @@ footer {
   & .loading {
     display: none;
     font-size: 20px;
-    color: var(--carambar-orange);
+    color: var(--coral);
     margin: 20px 0;
   }
 
@@ -196,7 +197,7 @@ footer {
     }
 
     & h3 {
-      color: var(--carambar-brown);
+      color: var(--peach);
       margin-bottom: 5px;
 
     }
@@ -216,7 +217,7 @@ footer {
   width: 100%;
 
   & h2 {
-    color: var(--carambar-brown);
+    color: var(--peach);
     margin-bottom: 20px;
     text-align: center;
   }
@@ -225,7 +226,7 @@ footer {
 
 .joke-container.detailed {
   background-color: white;
-  border: 3px solid var(--carambar-yellow);
+  border: 3px solid var(--sunshine);
 }
 /* Fin Styles pour detail blague */
 
@@ -246,7 +247,7 @@ footer {
       display: block;
       margin-bottom: 8px;
       font-weight: bold;
-      color: var(--carambar-brown);
+      color: var(--peach);
 
     
     } 
@@ -264,7 +265,7 @@ footer {
       resize: vertical;
     }
     & input:focus,  textarea:focus {
-      border-color: var(--carambar-orange);
+      border-color: var(--coral);
       outline: none;
     }
   }
@@ -321,3 +322,54 @@ footer {
 }
 
 /* Fin styles @media pour les écrans plus petits */
+
+/* Messages d'erreur */
+.error-message {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+  padding: 15px;
+  border-radius: 8px;
+  margin: 15px 0;
+  text-align: center;
+  animation: fadeIn 0.3s ease;
+}
+
+/* États pour la liste */
+.loading-list, .error-list, .empty-list {
+  padding: 20px;
+  text-align: center;
+  border-radius: 8px;
+  margin: 15px 0;
+}
+
+.loading-list {
+  background-color: var(--carambar-beige);
+  color: var(--carambar-brown);
+}
+
+.error-list {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.empty-list {
+  background-color: #e2e3e5;
+  color: #383d41;
+}
+
+/* Page détail */
+.joke-detail {
+  width: 100%;
+}
+
+.joke-detail h2 {
+  color: var(--carambar-brown);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.joke-container.detailed {
+  background-color: white;
+  border: 3px solid var(--carambar-yellow);
+}
