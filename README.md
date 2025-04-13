@@ -26,8 +26,10 @@ Ce frontend est la partie visible de l'application web de blagues Carambar & Co.
 - Interface responsive adaptée à tous les appareils
 - Design fidèle à l'identité visuelle de la marque
 
-### Structure du Projet
-
+###  Structure du Projet
+Le projet consiste à concevoir une application web fullstack composée de deux volets :
+- Une API backend permettant la gestion de blagues : [Repository Backend](https://github.com/gastsar/simplon-back.git)
+- Une application frontend affichant une landing page interactive : [Repository Frontend](https://github.com/gastsar/simplon-front.git)
 ```
 simplon-front/
 ├── style.css
