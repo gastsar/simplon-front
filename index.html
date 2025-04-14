@@ -7,7 +7,7 @@
   <title>Carambar & Co - Blagues</title>
   <link rel="stylesheet" href="css/styles.css">
 </head>
-<script defer src="main.js"></script>
+<script defer src="script/main.js"></script>
 <body>
   <header>
     <h1>Carambar & Co</h1>
@@ -24,15 +24,15 @@
   <!-- Page d'accueil -->
   <section id="homePage" class="page">
     <div class="container">
+      <h2 class="title">Blagues Aléatoire</h2>
       <div class="joke-container">
-        <div class="joke-question">Cliquez sur le bouton pour découvrir une blague !</div>
-        <div class="joke-answer" id="jokeContenu"></div>
+        <p class="joke-question">Cliquez sur le bouton pour découvrir une blague !</p>
+        <p class="joke-answer" id="jokeContenu"></p>
       </div>
-      <div>
+      <div class="joke-buttons">
         <button class="btn" id="jokeBtn">Une blague !</button>
         <button class="btn btn-secondary" id="answerBtn">Voir la réponse</button>
       </div>
-
 
       <div class="loading" id="loading">Chargement...</div>
     </div>
