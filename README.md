@@ -44,7 +44,7 @@ simplon-front/
 Le frontend utilise exclusivement les technologies web standards :
 - HTML5
 - CSS3
-- JavaScript (ES6+)
+- JavaScript 
 - Live Server (pour le développement)
 
 ## Communication avec l'API
@@ -52,6 +52,7 @@ Le frontend utilise exclusivement les technologies web standards :
 Le frontend communique avec l'API backend via des requêtes fetch pour récupérer les blagues. Les points d'entrée utilisés sont :
 - `GET /api/v1/blagues/random` : Pour obtenir une blague aléatoire
 - `GET /api/v1/blagues` : Pour lister toutes les blagues disponibles
+- `POST /api/v1/blagues` : Pour ajouté des blagues
 
 ## Installation et Lancement (dev)
 
@@ -73,13 +74,24 @@ npm install -g live-server
 # Puis lancer le serveur
 live-server
 ```
+###  Versionnement de l'API
 
-## Déploiement
+> [!IMPORTANT]
+> L'API est versionnée pour garantir la stabilité et faciliter les évolutions.  
+> Actuellement, seule la version `v1` est active.
+
+###  Documentation API
+
+Une documentation Swagger est disponible ici :
+- [Lien vers Swagger](https://app.swaggerhub.com/apis-docs/NarsonKevineYVES/carambarco/1.0.0)
+###  Déploiement
+> [!IMPORTANT]
+> **Important :** L'API est déployée via Render.com :
+> [Lien vers l'API déployée](https://simplon-back.onrender.com/)
 
 > [!IMPORTANT]
 > **Important :** Le frontend est déployé via githup page :
 > [Lien vers le site déployé](https://gastsar.github.io/simplon-front/)
-
 ## Prérequis
 
 - Un navigateur web moderne (Chrome, Firefox, Safari, Edge)
