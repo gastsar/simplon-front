@@ -1,5 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const API_BASE = "https://simplon-back.onrender.com/api/v1/blagues";
+
+  const API_BASE = location.hostname.includes("localhost") || location.hostname === "127.0.0.1"
+  ? ENV.DEV
+  : ENV.PROD;
+
+console.log("URL API utilisée :", API_BASE);
 
   // Sélection des éléments DOM
   const homePage = document.getElementById("homePage");
