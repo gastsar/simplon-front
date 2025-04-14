@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Carambar & Co - Blagues</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
+<script defer src="script/main.js"></script>
 <body>
   <header>
     <h1>Carambar & Co</h1>
@@ -21,14 +23,17 @@
 
   <!-- Page d'accueil -->
   <section id="homePage" class="page">
-    <div class="container">   
+    <div class="container">
+      <h2 class="title">Blagues Aléatoire</h2>
       <div class="joke-container">
-        <div class="joke-question">Cliquez sur le bouton pour découvrir une blague !</div>
-        <div class="joke-answer" id="jokeContenu"></div>
+        <p class="joke-question">Cliquez sur le bouton pour découvrir une blague !</p>
+        <p class="joke-answer" id="jokeContenu"></p>
+      </div>
+      <div class="joke-buttons">
+        <button class="btn" id="jokeBtn">Une blague !</button>
+        <button class="btn btn-secondary" id="answerBtn">Voir la réponse</button>
       </div>
 
-      <button class="btn" id="jokeBtn">Une blague !</button>
-      <button class="btn btn-secondary" id="answerBtn">Voir la réponse</button>
       <div class="loading" id="loading">Chargement...</div>
     </div>
   </section>
@@ -54,7 +59,8 @@
         </div>
         <div class="form-group">
           <label for="jokeContenuInput">Réponse</label>
-          <textarea id="jokeContenuInput" name="answer" required placeholder="Entrez la réponse à votre blague"></textarea>
+          <textarea id="jokeContenuInput" name="answer" required
+            placeholder="Entrez la réponse à votre blague"></textarea>
         </div>
         <button type="submit" class="btn">Ajouter la blague</button>
       </form>
@@ -77,8 +83,10 @@
   </section>
 
   <footer>
-    <p>&copy;  Carambar & Co - Tous droits réservés</p>
+    <p>&copy; Carambar & Co - Tous droits réservés</p>
   </footer>
-  <script src="main.js"></script>
+  <script src="./env.js"></script>
+  
 </body>
+
 </html>
